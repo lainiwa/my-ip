@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "my-ip"
+version = "0.1.0"
+description = ""
+authors = ["lainiwa <kirrik96@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+aiohttp = {version = "^3.6", extras = ["speedups"]}
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
