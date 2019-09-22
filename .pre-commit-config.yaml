@@ -1,5 +1,23 @@
 ---
 repos:
+
+  - repo: git@github.com:humitos/mirrors-autoflake.git
+    rev: v1.1
+    hooks:
+      - id: autoflake
+        args: ['--in-place', '--remove-all-unused-imports', '--remove-unused-variable']
+
+  -   repo: https://github.com/timothycrosley/isort
+      rev: 'master'
+      hooks:
+      -   id: isort
+          additional_dependencies: ['toml']
+
+  -   repo: https://github.com/psf/black
+      rev: stable
+      hooks:
+      - id: black
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: 'v2.3.0'  # 'v2.0.0'  # pick a git hash / tag to point to
     hooks:
@@ -52,18 +70,14 @@ repos:
   #     # Run yamllint
   #     - id: yamllint
 
-  -   repo: https://github.com/psf/black
-      rev: stable
-      hooks:
-      - id: black
 
-  -   repo: https://github.com/timothycrosley/isort
-      rev: 'master'
-      hooks:
-      -   id: isort
-          additional_dependencies: ['toml']
 
-  -   repo: https://github.com/pre-commit/mirrors-mypy
-      rev: 'master'  # Use the sha / tag you want to point at
-      hooks:
-      -   id: mypy
+
+
+
+
+  # Commented out, as it seems to not respect mypy.ini
+  # -   repo: https://github.com/pre-commit/mirrors-mypy
+  #     rev: 'master'  # Use the sha / tag you want to point at
+  #     hooks:
+  #     -   id: mypy
