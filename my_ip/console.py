@@ -4,7 +4,6 @@ The module specifies the script's CLI.
 """
 
 import os
-import asyncio
 import pkgutil
 from typing import Any, Union
 
@@ -26,12 +25,13 @@ def print_ip(settings: Settings) -> None:
 
     """
     services = settings.service.values()
-    loop = asyncio.get_event_loop()
-    coro = get_ip(services)
-    ip = loop.run_until_complete(coro)
-    if ip is None:
-        exit(1)
-    print(ip)
+    # loop = asyncio.get_event_loop()
+    # coro = get_ip(services)
+    # ip = loop.run_until_complete(coro)
+    # if ip is None:
+    #     exit(1)
+    # print(ip)
+    print(get_ip(services))
 
 
 def print_version(

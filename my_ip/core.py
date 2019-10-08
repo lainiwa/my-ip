@@ -3,38 +3,59 @@
 Asynchronous aiohttp requests to IP returning services.
 """
 
-import asyncio
-from typing import Tuple, Iterable, Optional
+import functools
+import itertools
+from typing import Iterable, Optional
 
-import aiohttp
+import asks
+import trio
 from my_ip.settings import Service
 
 
-async def try_service(
-    session: aiohttp.ClientSession, url: str, attr: Optional[str] = None
-) -> Tuple[str, str]:
-    """Send request to a single service.
-
-    Parameters:
-        session: aiohttp session object, so a function could reuse it.
-        url: addressee of the request
-        attr: if service returns JSON in response, use this attribute to
-            extract the IP; `None` otherwise.
-
-    Returns:
-        A tuple with the service's `url` and the IP extracted from response.
-
-    """
-    async with session.get(url) as response:
-        if attr is None:
-            text = await response.text()
-            return url, text.strip()
-        else:
-            json = await response.json()
-            return url, json[attr]
+async def _aenumerate(asequence, start=0):
+    """Asynchronously enumerate an async iterator from a given start value."""
+    n = itertools.count(start)
+    async for elem in asequence:
+        yield next(n), elem
 
 
-async def get_ip(services: Iterable[Service]) -> Optional[str]:
+async def _race(*async_fns):
+    """Return first `not None` result of a buch of asynchronous functions."""
+    if not async_fns:
+        raise ValueError("must pass at least one argument")
+
+    send_channel, receive_channel = trio.open_memory_channel(0)
+
+    async def jockey(async_fn):
+        await send_channel.send(await async_fn())
+
+    async with trio.open_nursery() as nursery:
+        # Producer
+        for async_fn in async_fns:
+            nursery.start_soon(jockey, async_fn)
+        # Receiver
+        async for i, winner in _aenumerate(receive_channel, 1):
+            # Return value if it is a "success" (i.e. not None)
+            if winner is not None:
+                nursery.cancel_scope.cancel()
+                return winner
+            # If the last value processed was not a "success", we return None.
+            # We _must_ want to do that explicitly, as we don't want to hang
+            # in an empty query forever.
+            if i == len(async_fns):
+                return None
+
+
+async def fetch(session, url, attr=None):
+    """Fetch and parse data from a single `url`."""
+    try:
+        response = await session.get(url)
+        return response.text.strip() if attr is None else response.json()[attr]
+    except Exception:
+        return None
+
+
+def get_ip(services: Iterable[Service]) -> Optional[str]:
     """Get first IP from multiple services.
 
     Parameters:
@@ -44,17 +65,10 @@ async def get_ip(services: Iterable[Service]) -> Optional[str]:
         A string with IP if success; returns `None` on failure.
 
     """
-    async with aiohttp.ClientSession() as session:
-        futures = [
-            try_service(session, service.addr, service.attr)
-            for service in services
-        ]
-
-        for future in asyncio.as_completed(futures):
-            try:
-                url, ip = await future
-                return ip
-            except Exception:
-                pass
-
-        return None
+    session = asks.Session(connections=20)
+    funcs = [
+        functools.partial(fetch, session, service.url, service.attr)
+        for service in services
+    ]
+    ip = trio.run(_race, *funcs)
+    return ip

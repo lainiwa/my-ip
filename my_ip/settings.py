@@ -13,12 +13,12 @@ class Service(BaseModel):
     """Model of single IP service.
 
     Attributes:
-        addr: URL of the service.
+        url: URL of the service.
         attr: what attribute to extract as IP, if the service returns JSON.
 
     """
 
-    addr: UrlStr
+    url: UrlStr
     attr: Optional[str]
 
 

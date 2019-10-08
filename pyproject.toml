@@ -1,3 +1,8 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+
 [tool.poetry]
 name = "my-ip"
 version = "0.1.0"
@@ -10,6 +15,8 @@ aiohttp = {version = "^3.6", extras = ["speedups"]}
 toml = "^0.10.0"
 pydantic = "^0.32.2"
 click = "^7.0"
+trio = "^0.12.1"
+asks = "^2.3"
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 pre-commit = "^1.18"
@@ -18,9 +25,11 @@ sphinx_rtd_theme = "^0.4.3"
 sphinxcontrib-napoleon = "^0.7.0"
 sphinxcontrib-golangdomain = "=0.2.0.dev0"  # had to manually install
 sphinx-autoapi = "^1.1"  # otherwise `poetry add --dev sphinx-autoapi` would fail
-
+pylint = "^2.4"
+ipython = "^7.8"
 [tool.poetry.scripts]
 mip = 'my_ip.console:cli'
+
 
 [tool.isort]
 # https://github.com/timothycrosley/isort/wiki/isort-Settings
@@ -54,8 +63,3 @@ exclude = '''
                      # the root of the project
 )
 '''
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
-
-

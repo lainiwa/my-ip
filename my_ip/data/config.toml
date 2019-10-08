@@ -1,36 +1,36 @@
 # Return plain text
 [service.ifconfig]
-addr = "https://ifconfig.co/ip"
+url = "https://ifconfig.co/ip"
 
 [service.icanhazip]
-addr = "https://icanhazip.com"
+url = "https://icanhazip.com"
 
 [service.ipinfo]
-addr = "https://ipinfo.io/ip"
+url = "https://ipinfo.io/ip"
 
 [service.ipecho]
-addr = "https://ipecho.net/plain"
+url = "https://ipecho.net/plain"
 
 [service.ident]
-addr = "https://ident.me"
+url = "https://ident.me"
 
 [service.curlmyip]
-addr = "http://curlmyip.net"
+url = "http://curlmyip.net"
 
 
 # Return JSON
 [service.ipify]
-addr = "https://api.ipify.org?format=json"
+url = "https://api.ipify.org?format=json"
 attr = "ip"
 
 [service.ip-api]
-addr = "http://ip-api.com/json"
+url = "http://ip-api.com/json"
 attr = "query"
 
 
 # Disfunctional
 [service.ipaddr]
-addr = "https://ipaddr.site"
+url = "https://ipaddr.site"
 
 [service.dsdasdsadasdsadasdd]
-addr = "https://dsdasdsadasdsadasdd.com"
+url = "https://dsdasdsadasdsadasdd.com"
