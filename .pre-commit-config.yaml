@@ -17,6 +17,12 @@ repos:
     hooks:
       - id: black
 
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: master
+    hooks:
+      - id: pydocstyle
+
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: 'v2.3.0'
     hooks:
