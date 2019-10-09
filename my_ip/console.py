@@ -4,6 +4,7 @@ The module specifies the script's CLI.
 """
 
 import os
+import logging
 import pkgutil
 from typing import Any, Union
 
@@ -13,6 +14,8 @@ import click
 from my_ip import __version__
 from my_ip.core import get_ip
 from my_ip.settings import Settings
+
+logger = logging.getLogger(__name__)
 
 
 def print_ip(settings: Settings) -> None:
@@ -24,14 +27,8 @@ def print_ip(settings: Settings) -> None:
         path: Location of the script's configuration file.
 
     """
-    services = settings.service.values()
-    # loop = asyncio.get_event_loop()
-    # coro = get_ip(services)
-    # ip = loop.run_until_complete(coro)
-    # if ip is None:
-    #     exit(1)
-    # print(ip)
-    print(get_ip(services))
+    ip_addr = get_ip(settings)
+    print(ip_addr)
 
 
 def print_version(
@@ -71,13 +68,26 @@ def cli(config: str) -> None:
     """Find out your internet IP address."""
     std_config_dir = click.get_app_dir(__package__)
     std_config_path = os.path.join(std_config_dir, "config.toml")
+    logger.debug(f"Standard config location is {repr(std_config_path)}")
 
+    # Install config file, if not yet exists
+    logger.debug(
+        "Checking that standard config exists in appropriate location"
+    )
     if not os.path.isfile(std_config_path):
+        logger.info("Standard config not found. Creating new")
+
         click.echo("First run.")
         click.echo(f"Installing config to `{std_config_path}`... ", nl=False)
 
+        logger.debug(
+            f"Creatig directory {repr(std_config_dir)} for configuration file"
+        )
         os.makedirs(std_config_dir, exist_ok=True)
 
+        logger.debug(
+            f"Copying sample configuration to {repr(std_config_path)}"
+        )
         with open(std_config_path, "w") as file:
             file.write(
                 pkgutil.get_data(__package__, "data/config.toml").decode(
@@ -90,6 +100,11 @@ def cli(config: str) -> None:
     if config is None:
         config = std_config_path
 
+    # Using click.open_file allows using dash (i.e "-") as config filename
+    # as an alias for "/dev/stdin"
+    logger.debug(
+        f"Reading settings from {repr(config)} and running ip addres discovery"
+    )
     with click.open_file(config, "r") as fil:
         print_ip(Settings(**toml.loads(fil.read())))
 

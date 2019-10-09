@@ -1,3 +1,9 @@
+# Settings of the session object
+[session]
+connections = 10
+headers = {}
+
+
 # Return plain text
 [service.ifconfig]
 url = "https://ifconfig.co/ip"

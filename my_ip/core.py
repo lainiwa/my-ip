@@ -3,13 +3,16 @@
 Asynchronous aiohttp requests to IP returning services.
 """
 
+import logging
 import functools
 import itertools
-from typing import Iterable, Optional
+from typing import Optional
 
 import asks
 import trio
-from my_ip.settings import Service
+from my_ip.settings import Settings
+
+logger = logging.getLogger(__name__)
 
 
 async def _aenumerate(asequence, start=0):
@@ -20,7 +23,17 @@ async def _aenumerate(asequence, start=0):
 
 
 async def _race(*async_fns):
-    """Return first `not None` result of a buch of asynchronous functions."""
+    """Return first `not None` result of a buch of asynchronous functions.
+
+    Parameters:
+        async_fns: Asynchronous functions which do not raise any exceptions
+            and return `None` on failure.
+
+    Returns:
+        Whatever the first successfully finished of the `async_fns` functions
+        return. If every of them fails - returns `None`.
+
+    """
     if not async_fns:
         raise ValueError("must pass at least one argument")
 
@@ -49,13 +62,21 @@ async def _race(*async_fns):
 async def fetch(session, url, attr=None):
     """Fetch and parse data from a single `url`."""
     try:
+        logger.debug(f'Getting ip from "{url}", attr={repr(attr)}')
         response = await session.get(url)
+
         return response.text.strip() if attr is None else response.json()[attr]
-    except Exception:
+
+    except Exception as err:
+        logger.info(
+            f"Getting ip from {repr(url)}, attr={repr(attr)} failed with: {err}"
+        )
+        logger.debug(f"Traceback", exc_info=True)
+
         return None
 
 
-def get_ip(services: Iterable[Service]) -> Optional[str]:
+def get_ip(settings: Settings) -> Optional[str]:
     """Get first IP from multiple services.
 
     Parameters:
@@ -65,10 +86,15 @@ def get_ip(services: Iterable[Service]) -> Optional[str]:
         A string with IP if success; returns `None` on failure.
 
     """
-    session = asks.Session(connections=20)
+    logger.debug(f"Creating http session (connection pool size {20})")
+    session = asks.Session(**dict(settings.session))
+
     funcs = [
         functools.partial(fetch, session, service.url, service.attr)
-        for service in services
+        for service in settings.service.values()
     ]
+
+    logger.debug("Asynchronously starting connections to provided services")
     ip = trio.run(_race, *funcs)
+
     return ip
