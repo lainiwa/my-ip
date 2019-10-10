@@ -3,16 +3,14 @@
 Asynchronous aiohttp requests to IP returning services.
 """
 
-import logging
 import functools
 import itertools
 from typing import Optional
 
 import asks
 import trio
+from loguru import logger
 from my_ip.settings import Settings
-
-logger = logging.getLogger(__name__)
 
 
 async def _aenumerate(asequence, start=0):
@@ -71,7 +69,7 @@ async def fetch(session, url, attr=None):
         logger.info(
             f"Getting ip from {repr(url)}, attr={repr(attr)} failed with: {err}"
         )
-        logger.debug(f"Traceback", exc_info=True)
+        logger.opt(exception=True).info('')
 
         return None
 

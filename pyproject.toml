@@ -11,12 +11,13 @@ authors = ["lainiwa <kirrik96@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-aiohttp = {version = "^3.6", extras = ["speedups"]}
 toml = "^0.10.0"
 pydantic = "^0.32.2"
 click = "^7.0"
 trio = "^0.12.1"
 asks = "^2.3"
+pyxdg = "^0.26.0"
+loguru = "^0.3.2"
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 pre-commit = "^1.18"
@@ -27,6 +28,7 @@ sphinxcontrib-golangdomain = "=0.2.0.dev0"  # had to manually install
 sphinx-autoapi = "^1.1"  # otherwise `poetry add --dev sphinx-autoapi` would fail
 pylint = "^2.4"
 ipython = "^7.8"
+mypy = "^0.730.0"
 [tool.poetry.scripts]
 mip = 'my_ip.console:cli'
 

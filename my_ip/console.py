@@ -4,18 +4,16 @@ The module specifies the script's CLI.
 """
 
 import os
-import logging
 import pkgutil
 from typing import Any, Union
 
 import toml
 
 import click
-from my_ip import __version__
+from my_ip import __package__, __version__
+from loguru import logger
 from my_ip.core import get_ip
 from my_ip.settings import Settings
-
-logger = logging.getLogger(__name__)
 
 
 def print_ip(settings: Settings) -> None:
