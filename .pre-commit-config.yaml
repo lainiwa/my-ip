@@ -33,6 +33,8 @@ repos:
           flake8-builtins,
           flake8-quotes,
           flake8-bugbear,
+          flake8-comprehensions,
+          flake8-eradicate,
         ]
       # Prevent giant files from being committed
       - id: check-added-large-files
