@@ -8,7 +8,7 @@ import sys
 from xdg import BaseDirectory
 from loguru import logger
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 if __package__ is None:
     __package__ = 'my_ip'
 
