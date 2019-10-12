@@ -66,10 +66,10 @@ async def fetch(session, url, attr=None):
         return response.text.strip() if attr is None else response.json()[attr]
 
     except Exception as err:
+        logger.opt(exception=True).debug('')
         logger.info(
             f"Getting ip from {repr(url)}, attr={repr(attr)} failed with: {err}"
         )
-        logger.opt(exception=True).info('')
 
         return None
 
