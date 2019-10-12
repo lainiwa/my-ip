@@ -216,7 +216,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.1.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Read metadata from Python packages"
 name = "importlib-metadata"
 optional = false
@@ -322,7 +322,7 @@ python-versions = "*"
 version = "0.6.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "More routines for operating on iterables, beyond itertools"
 name = "more-itertools"
 optional = false
@@ -858,7 +858,7 @@ python-versions = "*"
 version = "1.11.2"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 name = "zipp"
 optional = false
@@ -869,7 +869,7 @@ version = "0.6.0"
 more-itertools = "*"
 
 [metadata]
-content-hash = "0fc6b22b22c531bc9e4537f8058778428903615fe3f5ebe2571ba41577b57cfa"
+content-hash = "f8ace13973daaf7d5de63f02ed760c2420a6dcada7772c29f13f5296aeaefe45"
 python-versions = "^3.7"
 
 [metadata.hashes]
