@@ -15,8 +15,8 @@
    :target: https://github.com/psf/black
    :alt: Code style: black
 
-.. |Dependabot Badge| image:: https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot
-   :target: https://dependabot.com/
+.. |Dependabot Badge| image:: https://api.dependabot.com/badges/status?host=github&repo=lainiwa/my-ip
+   :target: https://dependabot.com
    :alt: Dependabot
 
 
