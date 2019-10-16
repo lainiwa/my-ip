@@ -5,9 +5,7 @@
 
 |Codacy Badge|
 |Black Badge|
-
-``my-ip`` is a simple CLI script, that finds out your public IP by asynchronously requesting multiple services.
-
+|Dependabot Badge|
 
 .. |Codacy Badge| image:: https://api.codacy.com/project/badge/Grade/683afc5412064a7da45b9b50ccd79975
    :target: https://www.codacy.com/manual/lainiwa/my-ip?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lainiwa/my-ip&amp;utm_campaign=Badge_Grade
@@ -17,10 +15,25 @@
    :target: https://github.com/psf/black
    :alt: Code style: black
 
+.. |Dependabot Badge| image:: https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot
+   :target: https://dependabot.com/
+   :alt: Dependabot
+
+
+.. short-description
+
+``my-ip`` is a simple CLI script,
+that finds out your public IP
+by asynchronously requesting multiple services.
+
+.. short-description-end
+
 
 
 Installation and Usage
 ======================
+
+.. installation-and-usage
 
 ``my-ip`` is a Python-only package `hosted on PyPI`_.
 The recommended installation method is `pip <https://pip.pypa.io/en/stable/>`_-installing it:
@@ -30,6 +43,7 @@ The recommended installation method is `pip <https://pip.pypa.io/en/stable/>`_-i
 .. code-block:: console
 
    $ pip install my_ip
+
 
 Now run it to get your public address!
 
@@ -41,18 +55,22 @@ Now run it to get your public address!
    Installing config to `/home/lain/.config/my_ip/config.toml`... Done!
    185.xxx.xxx.xxx
 
-As you can see, the script installed the configuration script on the first run. The second run will be less verbose though:
+
+As you can see, the script installed the configuration script on the first run.
+The second run will be less verbose though:
 
 .. code-block:: console
 
    $ mip
    185.xxx.xxx.xxx
 
+.. installation-and-usage-end
+
 
 
 Getting Help
 ============
 
-Have a question? File a `new issue`_!
+Have a question? Spotted a bug? File a `new issue`_!
 
 .. _new issue: https://github.com/lainiwa/my-ip/issues/new
