@@ -34,7 +34,7 @@ sphinxcontrib-golangdomain = "=0.2.0.dev0"  # had to manually install
 sphinx-autoapi = "^1.2"  # otherwise `poetry add --dev sphinx-autoapi` would fail
 pylint = "^2.4"
 ipython = "^7.8"
-mypy = "^0.730.0"
+mypy = "^0.740"
 [tool.poetry.scripts]
 mip = 'my_ip.console:cli'
 
