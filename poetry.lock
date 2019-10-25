@@ -122,6 +122,7 @@ version = "2019.9.11"
 [[package]]
 category = "main"
 description = "Foreign Function Interface for Python calling C code."
+marker = "os_name == \"nt\""
 name = "cffi"
 optional = false
 python-versions = "*"
@@ -427,7 +428,7 @@ description = "A collection of helpful Python tools!"
 name = "pockets"
 optional = false
 python-versions = "*"
-version = "0.7.2"
+version = "0.8"
 
 [package.dependencies]
 six = ">=1.5.2"
@@ -483,6 +484,7 @@ version = "1.8.0"
 [[package]]
 category = "main"
 description = "C parser in Python"
+marker = "os_name == \"nt\""
 name = "pycparser"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
@@ -918,7 +920,7 @@ parso = ["63854233e1fadb5da97f2744b6b24346d2750b85965e7e399bec1620232797dc", "66
 pexpect = ["2094eefdfcf37a1fdbfb9aa090862c1a4878e5c7e0e7e7088bdb511c558e5cd1", "9e2c1fd0e6ee3a49b28f95d4b33bc389c89b20af6a1255906e90ff1262ce62eb"]
 pickleshare = ["87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca", "9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56"]
 pluggy = ["0db4b7601aae1d35b4a033282da476845aa19185c1e6964b25cf324b5e4ec3e6", "fa5fa1622fa6dd5c030e9cad086fa19ef6a0cf6d7a2d12318e10cb49d6d68f34"]
-pockets = ["109eb91588e9cf722de98c98d300e1c5896e877f5704dc61176fa09686ca635b", "21a2405543c439ac091453ed187f558cf5294d3f85f15310f214ad4de057e0af"]
+pockets = ["27c89e24010ad722c6ee0bacd9fa2f74edeb03e661925e68c4114233bf587616", "e55b1f704cf1506d0246660b3425d2b7ac52349a286d709b19a2c1748570f3a6"]
 pre-commit = ["1d3c0587bda7c4e537a46c27f2c84aa006acc18facf9970bf947df596ce91f3f", "fa78ff96e8e9ac94c748388597693f18b041a181c94a4f039ad20f45287ba44a"]
 prompt-toolkit = ["46642344ce457641f28fc9d1c9ca939b63dadf8df128b86f1b9860e59c73a5e4", "e7f8af9e3d70f514373bf41aa51bc33af12a6db3f71461ea47fea985defb2c31", "f15af68f66e664eaa559d4ac8a928111eebd5feda0c11738b5998045224829db"]
 ptyprocess = ["923f299cc5ad920c68f2bc0bc98b75b9f838b93b599941a6b63ddbc2476394c0", "d7cc528d76e76342423ca640335bd3633420dc1366f258cb31d05e865ef5ca1f"]
