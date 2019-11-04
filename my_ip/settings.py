@@ -6,7 +6,7 @@ script to validate the settings while parsing them.
 
 from typing import Dict, Optional
 
-from pydantic import UrlStr, BaseModel
+from pydantic import HttpUrl, BaseModel
 
 
 class Service(BaseModel):
@@ -18,7 +18,7 @@ class Service(BaseModel):
 
     """
 
-    url: UrlStr
+    url: HttpUrl
     attr: Optional[str]
 
 
