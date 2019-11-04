@@ -35,6 +35,9 @@ sphinx-autoapi = "^1.2"  # otherwise `poetry add --dev sphinx-autoapi` would fai
 pylint = "^2.4"
 ipython = "^7.8"
 mypy = "^0.740"
+snakeviz = "^2.0"
+pyprof2calltree = "^1.4"
+gprof2dot = "^2017.9"
 [tool.poetry.scripts]
 mip = 'my_ip.console:cli'
 
