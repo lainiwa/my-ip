@@ -38,7 +38,7 @@ Installation and Usage
 ``my-ip`` is a Python-only package `hosted on PyPI`_.
 The recommended installation method is `pip <https://pip.pypa.io/en/stable/>`_-installing it:
 
-.. _hosted on PyPI: https://pypi.org/project/my_ip/
+.. _hosted on PyPI: https://pypi.org/project/my-ip/
 
 .. code-block:: console
 
