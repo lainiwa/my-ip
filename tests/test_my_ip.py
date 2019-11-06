@@ -8,7 +8,7 @@ from my_ip.console import cli
 
 def test_version() -> None:
     """Test for version."""
-    assert __version__ == "0.2.0"
+    assert __version__ == "0.2.1"
 
 
 def test_cli_version():
@@ -16,4 +16,4 @@ def test_cli_version():
     runner = CliRunner()
     result = runner.invoke(cli, ["--version"])
     assert result.exit_code == 0
-    assert result.output == "my_ip version: 0.2.0\n"
+    assert result.output == "my_ip version: 0.2.1\n"
