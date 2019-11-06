@@ -8,10 +8,10 @@ import pkgutil
 from typing import Any, Union
 
 import toml
-
 import click
-from my_ip import __package__, __version__
 from loguru import logger
+
+from my_ip import __package__, __version__
 from my_ip.core import get_ip
 from my_ip.settings import Settings
 

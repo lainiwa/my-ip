@@ -18,7 +18,8 @@
 #
 import os
 import sys
-from my_ip import __package__, __version__
+
+from my_ip import __version__
 
 sys.path.insert(0, os.path.abspath(".."))
 

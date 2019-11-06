@@ -10,7 +10,7 @@ from loguru import logger
 from importlib_metadata import version
 
 if __package__ is None:
-    __package__ = 'my_ip'
+    __package__ = "my_ip"
 __version__ = version(__package__)
 
 # Ensure directory for logs exists
