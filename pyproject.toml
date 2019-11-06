@@ -10,9 +10,18 @@ description = "Get your internet IP. Fast."
 authors = ["lainiwa <kirrik96@gmail.com>"]
 license = "MIT"
 readme = "README.rst"
+url = "https://github.com/lainiwa/my-ip"
 homepage = "https://github.com/lainiwa/my-ip"
 repository = "https://github.com/lainiwa/my-ip"
 # documentation = ""
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
