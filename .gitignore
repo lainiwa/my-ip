@@ -36,3 +36,8 @@ MANIFEST.in
 venv
 /releases/*
 pip-wheel-metadata
+
+# This file is dynamicly populated with third-party libraries
+# so no need to store it in git
+.isort.cfg
+
