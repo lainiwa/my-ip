@@ -8,7 +8,7 @@
 |Black Badge|
 |Dependabot Badge|
 
-.. |Actions Status| image:: https://github.com/lainiwa/my-ip/workflows/pythonpackage/badge.svg
+.. |Actions Status| image:: https://github.com/lainiwa/my-ip/workflows/Python%20package/badge.svg
    :target: https://github.com/lainiwa/my-ip/actions
    :alt: Github Actions status
 
