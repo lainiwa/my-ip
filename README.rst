@@ -3,9 +3,14 @@
 ``my-ip``: Get your public IP address. Fast.
 ============================================
 
+|Actions Status|
 |Codacy Badge|
 |Black Badge|
 |Dependabot Badge|
+
+.. |Actions Status| image:: https://github.com/lainiwa/my-ip/workflows/pythonpackage/badge.svg
+   :target: https://github.com/lainiwa/my-ip/actions
+   :alt: Github Actions status
 
 .. |Codacy Badge| image:: https://api.codacy.com/project/badge/Grade/683afc5412064a7da45b9b50ccd79975
    :target: https://www.codacy.com/manual/lainiwa/my-ip?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lainiwa/my-ip&amp;utm_campaign=Badge_Grade
