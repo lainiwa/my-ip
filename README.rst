@@ -7,6 +7,16 @@
 |Codacy Badge|
 |Black Badge|
 |Dependabot Badge|
+|Package version|
+|Python versions|
+
+.. |Python versions| image:: https://img.shields.io/pypi/pyversions/my-ip.svg
+   :target: https://pypi.org/project/my-ip/
+   :alt: Package version
+
+.. |Package version| image:: https://img.shields.io/pypi/v/my-ip.svg
+   :target: https://pypi.org/project/my-ip/
+   :alt: Package version
 
 .. |Actions Status| image:: https://github.com/lainiwa/my-ip/workflows/Python%20package/badge.svg
    :target: https://github.com/lainiwa/my-ip/actions
