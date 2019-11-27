@@ -34,7 +34,7 @@ pyxdg = "^0.26.0"
 loguru = "^0.3.2"
 importlib_metadata = "^0.23.0"
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^5.3"
 pre-commit = "^1.18"
 sphinx = "^2.2"
 sphinx_rtd_theme = "^0.4.3"
